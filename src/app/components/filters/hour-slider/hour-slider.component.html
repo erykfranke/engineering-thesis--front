@@ -1,0 +1,28 @@
+<div class="stroke-container">
+    <div *ngFor="let stroke of [].constructor(25); index as i" class="stroke">
+        <span>|</span>
+        <div *ngIf="i % 6 === 0" class="stroke__number">
+            {{i}}
+        </div>
+    </div>
+</div>
+<main class="slider-container">
+    <mat-slider #leftRange
+                class="slider slider--left"
+                [step]="1"
+                [max]="24"
+                [min]="0"
+                [(ngModel)]="value.start"
+                (input)="leftSliderMoveHandler($event)"
+                (valueChange)="hourRangeChanged.emit()">
+    </mat-slider>
+    <mat-slider #rightRange
+                class="slider"
+                [step]="1"
+                [max]="24"
+                [min]="0"
+                [(ngModel)]="value.end"
+                (input)="rightSliderMoveHandler($event)"
+                (valueChange)="hourRangeChanged.emit()">
+    </mat-slider>
+</main>

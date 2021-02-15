@@ -1,0 +1,32 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css"
+
+.wrapper
+    display: flex
+    width: 100vw
+    height: 100vh
+
+    .map
+        flex-grow: 1
+
+    .map-control-panel
+        display: flex
+        flex-direction: column
+        height: 100%
+        flex-basis: 450px
+        z-index: 400
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.25)
+
+        &__title
+            margin: 0
+            padding: 24px
+            font-size: 24px
+            letter-spacing: .4px
+            border-bottom: 1px solid #e2e2e2
+
+        &__filters
+            padding: 24px
+
+        &__legend
+            border-top: 1px solid #e2e2e2
+            margin-top: auto
+            padding: 24px

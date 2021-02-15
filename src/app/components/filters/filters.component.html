@@ -1,0 +1,28 @@
+<form [formGroup]="filtersForm">
+    <section class="filter">
+        <h3 class="filter__title">wybór daty:</h3>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formArrayName]="'dateRange'" [rangePicker]="picker" >
+                <input matStartDate placeholder="Start date" [formControlName]="'start'">
+                <input matEndDate placeholder="End date" [formControlName]="'end'" (dateInput)="dateChangeEmit()">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker ></mat-date-range-picker>
+        </mat-form-field>
+    </section>
+
+    <section class="filter">
+        <h3 class="filter__title">zakres godzin:</h3>
+        <app-hour-slider [formControlName]="'hourRange'" (hourRangeChanged)="hourRangeEmit()"></app-hour-slider>
+    </section>
+
+    <section class="filter">
+        <h3 class="filter__title">grupy:</h3>
+        <mat-selection-list #list (selectionChange)="selectDisabilitiesChangeEmit()">
+            <mat-list-option *ngFor="let disability of disabilitiesOptions.disabilities" [value]="disability" [selected]="true">
+                {{disability.name}}
+            </mat-list-option>
+        </mat-selection-list>
+    </section>
+</form>
