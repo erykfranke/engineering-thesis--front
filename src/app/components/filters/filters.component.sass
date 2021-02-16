@@ -1,15 +1,28 @@
+\:host
+    position: relative
 
-.filter
-    padding: 16px 0
+    .filter
+        padding: 16px 0
 
-    &__title
-        margin: 0 0 8px 0
-        font-size: 18px
-        font-weight: 500
-        font-style: italic
+        &__title
+            margin: 0 0 8px 0
+            font-size: 18px
+            font-weight: 500
+            font-style: italic
 
-mat-form-field
-    width: 100%
+    mat-form-field
+        width: 100%
 
-mat-checkbox
-    display: block
+    .spinner-container
+        position: absolute
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+
+        mat-spinner
+            width: 50px !important
+            height: 50px !important
+
+            ::ng-deep svg
+                width: 50px !important
+                height: 50px !important

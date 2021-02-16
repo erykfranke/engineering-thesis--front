@@ -16,6 +16,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {HourSliderComponent} from './components/filters/hour-slider/hour-slider.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import {MatListModule} from '@angular/material/list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import {MatListModule} from '@angular/material/list';
         MatCheckboxModule,
         MatSliderModule,
         NgxDaterangepickerMd.forRoot(),
-        MatListModule
+        MatListModule,
+        MatProgressSpinnerModule
     ],
     providers: [],
     bootstrap: [AppComponent]

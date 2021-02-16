@@ -18,11 +18,13 @@ export class FiltersComponent implements OnInit {
     @ViewChild('list', {static: true}) matListOptions: MatSelectionList;
     filtersForm: FormGroup;
     disabilitiesOptions: DisabilitiesModel;
+    loading = true;
 
     constructor(private formBuilder: FormBuilder, private appService: AppService) {
     }
 
     ngOnInit(): void {
+        this.loading = true;
         this.appService.getDisabilities().subscribe(disabilities => {
             this.disabilitiesOptions = disabilities;
             this.filtersForm = this.formBuilder.group({
@@ -33,6 +35,7 @@ export class FiltersComponent implements OnInit {
                 hourRange: new FormControl({start: 0, end: 24}),
             });
             this.filtersForm.value['disabilities'] = this.disabilitiesOptions.disabilities;
+            this.loading = false;
         });
     }
 
