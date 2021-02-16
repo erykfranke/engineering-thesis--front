@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, ViewChild, EventEmitter, AfterViewInit} from '@angular/core';
 import {MatDateRangePicker} from '@angular/material/datepicker';
 import * as moment from 'moment';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
@@ -15,7 +15,7 @@ export class FiltersComponent implements OnInit {
 
     @Output() filterChangeEmit = new EventEmitter<any>();
 
-    @ViewChild('list', {static: true}) matListOptions: MatSelectionList;
+    @ViewChild('list', {static: false}) matListOptions: MatSelectionList;
     filtersForm: FormGroup;
     disabilitiesOptions: DisabilitiesModel;
     loading = true;
@@ -33,26 +33,25 @@ export class FiltersComponent implements OnInit {
                     end: new FormControl(new Date(moment().format('YYYY-MM-DD')))
                 }),
                 hourRange: new FormControl({start: 0, end: 24}),
+                disabilities: new FormControl(this.disabilitiesOptions.disabilities)
             });
-            this.filtersForm.value['disabilities'] = this.disabilitiesOptions.disabilities;
             this.loading = false;
+            this.filterChangeEmit.emit();
         });
     }
 
     dateChangeEmit(): void {
         if (this.filtersForm.value.dateRange.start && this.filtersForm.value.dateRange.end) {
-            this.filtersForm.value['disabilities'] = this.matListOptions._value;
             this.filterChangeEmit.emit();
         }
     }
 
     hourRangeEmit(): void {
-        this.filtersForm.value['disabilities'] = this.matListOptions._value;
         this.filterChangeEmit.emit();
     }
 
     selectDisabilitiesChangeEmit(): void {
-      this.filtersForm.value['disabilities'] = this.matListOptions._value;
+      this.filtersForm.value.disabilities = this.matListOptions._value;
       this.filterChangeEmit.emit();
     }
 }
