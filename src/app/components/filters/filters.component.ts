@@ -29,8 +29,8 @@ export class FiltersComponent implements OnInit {
             this.disabilitiesOptions = disabilities;
             this.filtersForm = this.formBuilder.group({
                 dateRange: new FormGroup({
-                    start: new FormControl({value: new Date()}),
-                    end: new FormControl({value: new Date()})
+                    start: new FormControl(new Date(moment().subtract(30, 'd').format('YYYY-MM-DD'))),
+                    end: new FormControl(new Date(moment().format('YYYY-MM-DD')))
                 }),
                 hourRange: new FormControl({start: 0, end: 24}),
             });
