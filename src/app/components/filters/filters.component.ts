@@ -1,15 +1,31 @@
-import {Component, OnInit, Output, ViewChild, EventEmitter, AfterViewInit} from '@angular/core';
-import {MatDateRangePicker} from '@angular/material/datepicker';
+import {Component, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
 import * as moment from 'moment';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {AppService} from '../../services/app.service';
 import {DisabilitiesModel} from '../../models/disabilities.model';
 import {MatSelectionList} from '@angular/material/list';
+import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS,} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
 @Component({
     selector: 'app-filters',
     templateUrl: './filters.component.html',
-    styleUrls: ['./filters.component.sass']
+    styleUrls: ['./filters.component.sass'],
+    providers: [
+        {
+            provide: MAT_DATE_LOCALE,
+            useValue: 'pl'
+        },
+        {
+            provide: DateAdapter,
+            useClass: MomentDateAdapter,
+            deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+        },
+        {
+            provide: MAT_DATE_FORMATS,
+            useValue: MAT_MOMENT_DATE_FORMATS
+        },
+    ],
 })
 export class FiltersComponent implements OnInit {
 
