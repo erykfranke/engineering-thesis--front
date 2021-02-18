@@ -4,7 +4,7 @@
 <div class="heatmap-colors">
     <div *ngFor="let color of colorPaletteService.COLORS_PALETTE; index as i" [style.background-color]="color" class="color">
         <span class="color-label">
-            {{(colorPaletteService.step * i).toPrecision().slice(0,4)}}
+            {{(colorPaletteService.step * i).toFixed(1)}}
         </span>
     </div>
 </div>

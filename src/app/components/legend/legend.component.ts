@@ -6,7 +6,7 @@ import {ColorPaletteService} from '../../services/color-palette.service';
     templateUrl: './legend.component.html',
     styleUrls: ['./legend.component.sass']
 })
-export class LegendComponent implements OnInit {
+export class LegendComponent {
 
     readonly CHUNK_SIZE = 10;
     readonly MAX_ZOOM = 18;
@@ -28,8 +28,4 @@ export class LegendComponent implements OnInit {
 
     constructor(public colorPaletteService: ColorPaletteService) {
     }
-
-    ngOnInit(): void {
-    }
-
 }
