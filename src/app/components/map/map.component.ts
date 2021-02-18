@@ -86,6 +86,7 @@ export class MapComponent implements AfterViewInit {
                 L.latLngBounds(L.latLng(chunk.southWest.lat, chunk.southWest.lng), L.latLng(chunk.northEast.lat, chunk.northEast.lng)),
                 {color, fillOpacity: .75, stroke: false}
                 );
+            rectangle.bindPopup(`średnia liczba wystąpień: ${chunk.count}`);
             chunksMapGroup.push(rectangle);
         }
         this.chunksGroup = L.layerGroup(chunksMapGroup);
