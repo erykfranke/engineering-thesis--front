@@ -94,8 +94,8 @@ export class MapComponent implements AfterViewInit {
 
     public getMapPosition(): MapPositionModel {
         return {
-            bounds: this.map.getBounds(),
-            zoom: this.map.getZoom()
+            bounds: this.map?.getBounds(),
+            zoom: this.map?.getZoom()
         };
     }
 }

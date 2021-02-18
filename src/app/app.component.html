@@ -10,7 +10,7 @@
         <app-filters #filters class="map-control-panel__filters" (filterChangeEmit)="getChunks()">
         </app-filters>
 
-        <app-legend class="map-control-panel__legend">
+        <app-legend class="map-control-panel__legend" [mapZoom]="map?.getMapPosition().zoom">
         </app-legend>
     </aside>
 </main>
