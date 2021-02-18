@@ -5,7 +5,7 @@
             <mat-label>Wprowadź zakres dat</mat-label>
             <mat-date-range-input [formArrayName]="'dateRange'" [rangePicker]="picker" >
                 <input matStartDate placeholder="Start date" [formControlName]="'start'">
-                <input matEndDate placeholder="End date" [formControlName]="'end'" (dateInput)="dateChangeEmit()">
+                <input matEndDate placeholder="End date" [formControlName]="'end'" (dateInput)="dateChangedHandler()">
             </mat-date-range-input>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker color="accent" #picker ></mat-date-range-picker>
@@ -14,12 +14,12 @@
 
     <section class="filter">
         <h3 class="filter__title">zakres godzin:</h3>
-        <app-hour-slider [formControlName]="'hourRange'" (hourRangeChanged)="hourRangeEmit()"></app-hour-slider>
+        <app-hour-slider [formControlName]="'hourRange'" (hourRangeChanged)="hourRangeChangedHandler()"></app-hour-slider>
     </section>
 
     <section class="filter">
         <h3 class="filter__title">grupy:</h3>
-        <mat-selection-list #list (selectionChange)="selectDisabilitiesChangeEmit()">
+        <mat-selection-list #list (selectionChange)="selectDisabilitiesChangedHandler()">
             <mat-list-option *ngFor="let disability of disabilitiesOptions.disabilities" [value]="disability" [selected]="true">
                 {{disability.name}}
             </mat-list-option>

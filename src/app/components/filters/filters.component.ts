@@ -4,7 +4,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {AppService} from '../../services/app.service';
 import {DisabilitiesModel} from '../../models/disabilities.model';
 import {MatSelectionList} from '@angular/material/list';
-import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS,} from '@angular/material-moment-adapter';
+import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
 @Component({
@@ -29,9 +29,10 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 })
 export class FiltersComponent implements OnInit {
 
-    @Output() filterChangeEmit = new EventEmitter<any>();
+    @Output() filterChanged = new EventEmitter<any>();
 
     @ViewChild('list', {static: false}) matListOptions: MatSelectionList;
+
     filtersForm: FormGroup;
     disabilitiesOptions: DisabilitiesModel;
     loading = true;
@@ -52,22 +53,22 @@ export class FiltersComponent implements OnInit {
                 disabilities: new FormControl(this.disabilitiesOptions.disabilities)
             });
             this.loading = false;
-            this.filterChangeEmit.emit();
+            this.filterChanged.emit();
         });
     }
 
-    dateChangeEmit(): void {
+    dateChangedHandler(): void {
         if (this.filtersForm.value.dateRange.start && this.filtersForm.value.dateRange.end) {
-            this.filterChangeEmit.emit();
+            this.filterChanged.emit();
         }
     }
 
-    hourRangeEmit(): void {
-        this.filterChangeEmit.emit();
+    hourRangeChangedHandler(): void {
+        this.filterChanged.emit();
     }
 
-    selectDisabilitiesChangeEmit(): void {
+    selectDisabilitiesChangedHandler(): void {
         this.filtersForm.value.disabilities = this.matListOptions._value;
-        this.filterChangeEmit.emit();
+        this.filterChanged.emit();
     }
 }
