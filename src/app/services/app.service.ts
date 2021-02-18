@@ -27,10 +27,6 @@ export class AppService {
         );
     }
 
-    addChunk(lat: number, lng: number, timestamp: number, userType: string): Observable<void> {
-        return this.http.post<void>('http://localhost:3000/add', {lat, lng, timestamp, userType});
-    }
-
     getDisabilities(): Observable<DisabilitiesModel> {
         return this.http.get<DisabilitiesModel>('http://server437671.nazwa.pl/api/disability', {
             headers: {
