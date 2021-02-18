@@ -16,7 +16,7 @@ export class AppService {
 
     getChunks(mapPosition: MapPositionModel, filterOptions: FilterModel): Observable<ServerChunksResponseModel> {
         return this.http.get<ServerChunksResponseModel>(
-            `http://localhost:3000/?northEastLat=${mapPosition.bounds.getNorthEast().lat}`
+            `http://localhost:3000/chunks?northEastLat=${mapPosition.bounds.getNorthEast().lat}`
                    + `&northEastLng=${mapPosition.bounds.getNorthEast().lng}`
                    + `&southWestLat=${mapPosition.bounds.getSouthWest().lat}`
                    + `&southWestLng=${mapPosition.bounds.getSouthWest().lng}`
