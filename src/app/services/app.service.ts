@@ -1,10 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ChunkModel} from '../models/chunk.model';
-import * as L from 'leaflet';
 import {MapPositionModel} from '../models/map-position.model';
-import {map} from 'rxjs/operators';
 import {ServerChunksResponseModel} from '../models/server-chunks-response.model';
 import {FilterModel} from '../models/filter.model';
 import {DisabilitiesModel} from '../models/disabilities.model';

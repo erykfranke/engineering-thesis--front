@@ -18,12 +18,10 @@ export class AppComponent {
     }
 
     getChunks(): void {
-        console.log('🎍🎍🎍', this.filters.filtersForm.value);
-        this.appService.getChunks(this.map.getMapPosition(), this.filters.filtersForm.value).subscribe( (chunks) => {
+        this.appService.getChunks(this.map.getMapPosition(), this.filters.filtersForm.value).subscribe((chunks) => {
             this.colorPaletteService.maxValue = chunks.maxCount;
             this.map.chunks = chunks.chunks;
         });
-        return;
     }
 
 }

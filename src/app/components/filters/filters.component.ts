@@ -67,7 +67,7 @@ export class FiltersComponent implements OnInit {
     }
 
     selectDisabilitiesChangeEmit(): void {
-      this.filtersForm.value.disabilities = this.matListOptions._value;
-      this.filterChangeEmit.emit();
+        this.filtersForm.value.disabilities = this.matListOptions._value;
+        this.filterChangeEmit.emit();
     }
 }
