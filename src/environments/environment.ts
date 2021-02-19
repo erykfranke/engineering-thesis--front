@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+    production: false,
+    heatmap_api_url: 'https://cryptic-springs-76768.herokuapp.com/',
+    global_api_url: 'http://server437671.nazwa.pl',
 };
 
 /*

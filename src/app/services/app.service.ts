@@ -5,6 +5,7 @@ import {MapPositionModel} from '../models/map-position.model';
 import {ServerChunksResponseModel} from '../models/server-chunks-response.model';
 import {FilterModel} from '../models/filter.model';
 import {DisabilitiesModel} from '../models/disabilities.model';
+import {environment} from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,7 @@ export class AppService {
 
     getChunks(mapPosition: MapPositionModel, filterOptions: FilterModel): Observable<ServerChunksResponseModel> {
         return this.http.get<ServerChunksResponseModel>(
-            `http://localhost:3000/chunks?northEastLat=${mapPosition.bounds.getNorthEast().lat}`
+            `${environment.heatmap_api_url}chunks?northEastLat=${mapPosition.bounds.getNorthEast().lat}`
                    + `&northEastLng=${mapPosition.bounds.getNorthEast().lng}`
                    + `&southWestLat=${mapPosition.bounds.getSouthWest().lat}`
                    + `&southWestLng=${mapPosition.bounds.getSouthWest().lng}`
@@ -28,7 +29,7 @@ export class AppService {
     }
 
     getDisabilities(): Observable<DisabilitiesModel> {
-        return this.http.get<DisabilitiesModel>('http://server437671.nazwa.pl/api/disability', {
+        return this.http.get<DisabilitiesModel>(`${environment.global_api_url}/api/disability`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer xuyR6D1kgai15WstR01CwyBljcZt1J4StGsNMeoU',
