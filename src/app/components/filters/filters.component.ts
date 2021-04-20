@@ -59,6 +59,8 @@ export class FiltersComponent implements OnInit {
 
     dateChangedHandler(): void {
         if (this.filtersForm.value.dateRange.start && this.filtersForm.value.dateRange.end) {
+            this.filtersForm.value.dateRange.start = this.filtersForm.value.dateRange.start.toDate();
+            this.filtersForm.value.dateRange.end = this.filtersForm.value.dateRange.end.toDate();
             this.filterChanged.emit();
         }
     }
