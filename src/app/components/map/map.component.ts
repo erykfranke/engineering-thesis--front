@@ -68,7 +68,7 @@ export class MapComponent implements AfterViewInit {
             L.latLngBounds(L.latLng(chunk.southWest.lat, chunk.southWest.lng), L.latLng(chunk.northEast.lat, chunk.northEast.lng)),
             {color, fillOpacity: .75, stroke: false}
         );
-        rectangle.bindPopup(`Średnia liczba wystąpień: ${chunk.count}`);
+        rectangle.bindPopup(`Liczba wystąpień: ${chunk.count}`);
         return rectangle;
     }
 }
