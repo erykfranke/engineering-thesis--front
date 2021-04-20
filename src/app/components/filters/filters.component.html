@@ -1,7 +1,7 @@
 <form [formGroup]="filtersForm" *ngIf="!loading; else spinner">
     <section class="filter">
-        <h3 class="filter__title">wybór daty:</h3>
-        <mat-form-field appearance="fill">
+        <h3 class="filter__title">zakres dat:</h3>
+        <mat-form-field appearance="fill" (click)="picker.open()">
             <mat-label>Wprowadź zakres dat</mat-label>
             <mat-date-range-input [formArrayName]="'dateRange'" [rangePicker]="picker" >
                 <input matStartDate placeholder="Start date" [formControlName]="'start'">
@@ -18,7 +18,7 @@
     </section>
 
     <section class="filter">
-        <h3 class="filter__title">grupy:</h3>
+        <h3 class="filter__title">typy użytkowników:</h3>
         <mat-selection-list #list (selectionChange)="selectDisabilitiesChangedHandler()">
             <mat-list-option *ngFor="let disability of disabilitiesOptions.disabilities" [value]="disability" [selected]="true">
                 {{disability.name}}
