@@ -1,13 +1,24 @@
 <h4 class="legend-title">
     Legenda:
 </h4>
-<div class="heatmap-colors">
-    <div *ngFor="let color of colorPaletteService.COLORS_PALETTE; index as i" [style.background-color]="color" class="color">
-        <span class="color-label">
-            {{(colorPaletteService.step * i).toFixed(1)}}
-        </span>
+<ng-container *ngIf="colorPaletteService.maxValue !== undefined; else spinner">
+    <div class="heatmap-colors">
+        <div *ngFor="let color of colorPaletteService.COLORS_PALETTE; index as i; last as isLast" [style.background-color]="color" class="color">
+            <span class="color-label" *ngIf="i % 2 === 0">
+                {{(colorPaletteService.step * i).toFixed(1)}}
+            </span>
+            <span *ngIf="isLast" class="color-label color-label--last">
+                {{colorPaletteService.maxValue.toFixed(1)}}
+            </span>
+        </div>
     </div>
-</div>
-<p class="info">
-    Średnia liczba wystąpień na {{chunkSize}} m<span class="info__top-index">2</span>
-</p>
+    <p class="info">
+        Liczba wystąpień na {{chunkSize}} m<span class="info__top-index">2</span>
+    </p>
+</ng-container>
+
+<ng-template #spinner>
+    <div class="spinner-container">
+        <mat-spinner [color]="'accent'"></mat-spinner>
+    </div>
+</ng-template>

@@ -1,38 +1,60 @@
-.legend-title
-    margin: 0
-    font-size: 16px
-    padding-bottom: 32px
-    font-weight: 600
-    letter-spacing: 0.1px
-
-.heatmap-colors
-    display: flex
-    justify-content: center
-    gap: 1px
-
-    .color
-        position: relative
-        width: 32px
-        height: 32px
-
-        &-label
-            color: #333333
-            position: absolute
-            top: 0
-            left: 0
-            transform: translate(-50%, -120%)
-            font-size: 12px
-
-.info
-    margin: 12px 0 0 0
-    font-size: 12px
-    font-weight: 300
-    color: #808080
-    letter-spacing: .1px
+\:host
     position: relative
 
-    &__top-index
-        font-size: 8px
+    .legend-title
+        margin: 0
+        font-size: 16px
+        padding-bottom: 32px
+        font-weight: 600
+        letter-spacing: 0.1px
+
+    .heatmap-colors
+        display: flex
+        justify-content: center
+        gap: 1px
+
+        .color
+            position: relative
+            width: 32px
+            height: 32px
+
+            &-label
+                color: #333333
+                position: absolute
+                top: 0
+                left: 0
+                transform: translate(-50%, -120%)
+                font-size: 10px
+
+                &--last
+                    right: 0
+                    left: unset
+                    transform: translate(50%, -120%)
+
+    .info
+        margin: 12px 0 0 0
+        font-size: 12px
+        font-weight: 300
+        color: #808080
+        letter-spacing: .1px
+        position: relative
+
+        &__top-index
+            font-size: 8px
+            position: absolute
+            top: 0
+
+    .spinner-container
         position: absolute
-        top: 0
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+
+        mat-spinner
+            width: 30px !important
+            height: 30px !important
+
+            ::ng-deep svg
+                width: 30px !important
+                height: 30px !important
 
